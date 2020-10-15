@@ -1,0 +1,20 @@
+         <FirstLogonCommands>
+            <SynchronousCommand>
+               <CommandLine>cmd.exe /c netsh firewall add portopening TCP 5985 "Port 5985"</CommandLine>
+               <Description>Win RM port open</Description>
+               <Order>1</Order>
+               <RequiresUserInput>true</RequiresUserInput>
+            </SynchronousCommand>
+            <SynchronousCommand>
+               <CommandLine>powershell -Command "Enable-PSRemoting -SkipNetworkProfileCheck -Force"</CommandLine>
+               <Description>Enable PS-Remoting</Description>
+               <Order>2</Order>
+               <RequiresUserInput>true</RequiresUserInput>
+            </SynchronousCommand>
+            <SynchronousCommand>
+               <CommandLine>powershell -Command "Set-ExecutionPolicy -ExecutionPolicy RemoteSigned"</CommandLine>
+               <Description>Enable Remote-Signing</Description>
+               <Order>3</Order>
+               <RequiresUserInput>false</RequiresUserInput>
+            </SynchronousCommand>
+         </FirstLogonCommands>
